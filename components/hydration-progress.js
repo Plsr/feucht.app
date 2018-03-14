@@ -7,10 +7,10 @@ class HydrationProgress extends Component {
   }
 
   render() {
-    const { drankToday } = this.props
+    const { drankToday, goal } = this.props
 
     return (
-      <Text>You drank {this.prettyPrintAmount(drankToday)} today!</Text>
+      <Text>You drank {this.prettyPrintAmount(drankToday)} of {this.prettyPrintAmount(goal)} today!</Text>
     );
   }
 }

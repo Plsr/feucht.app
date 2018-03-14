@@ -18,10 +18,11 @@ export default class HomeScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation
+    const { dailyGoal } = this.props
     return (
       <View style={styles.container}>
         <Text>Feucht.app</Text>
-        <HydrationProgress drankToday={this.state.drankToday} />
+        <HydrationProgress drankToday={this.state.drankToday} goal={dailyGoal} />
         <Button
           onPress={this.handleDrinkButtonPress}
           title="Drink 330ML"

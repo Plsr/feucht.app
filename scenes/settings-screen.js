@@ -13,7 +13,6 @@ class SettingsScreen extends Component {
   componentWillMount() {
     let dailyGoal = this.getDailyGoalFromStorage()
     dailyGoal.then((val) => {
-      console.log(val)
       this.setState({
         dailyGoal: val
       })
@@ -38,13 +37,11 @@ class SettingsScreen extends Component {
   }
 
   handleDailyGoalChange = (value) => {
-    let dailyGoal = this.writeDailyGoalToStorage(value)
-    dailyGoal.then(() => {
-      this.setState({ dailyGoal: value })
-    })
+    this.props.setDailyGoal(value)
   }
 
   render() {
+    const { dailyGoal } = this.props
     return (
       <View>
         <Text> Welcome to the Settings </Text>
@@ -52,7 +49,7 @@ class SettingsScreen extends Component {
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.handleDailyGoalChange(text)}
-          value={this.state.dailyGoal.toString()}
+          value={dailyGoal.toString()}
         />
       </View>
     )
