@@ -1,42 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import HydrationProgress from './components/hydration-progress';
+import { StackNavigator } from 'react-navigation';
+import HomeScreen from './scenes/home-screen.js';
+import SettingsScreen from './scenes/settings-screen.js';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { drankToday: 0 }
-  }
+const App = StackNavigator({
+  Home: { screen: HomeScreen },
+  Settings: { screen: SettingsScreen }
+})
 
-  increaseDrankToday = (amount) => {
-    this.setState((prevState) => {
-      return { drankToday: prevState.drankToday + amount }
-    })
-  }
-
-  handleDrinkButtonPress = () => this.increaseDrankToday(330)
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Feucht.app</Text>
-        <HydrationProgress drankToday={this.state.drankToday} />
-        <Button
-          onPress={this.handleDrinkButtonPress}
-          title="Drink 330ML"
-          color="#FE4365"
-          acessibilityLabel="Drink 330ML"
-        />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#83AF9B',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
