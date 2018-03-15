@@ -8,6 +8,10 @@ export default class HomeScreen extends React.Component {
     this.state = { drankToday: 0 }
   }
 
+  componentWillMount() {
+    this.props.loadSettings()
+  }
+
   increaseDrankToday = (amount) => {
     this.setState((prevState) => {
       return { drankToday: prevState.drankToday + amount }
