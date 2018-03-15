@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import HydrationProgress from '../components/hydration-progress';
+import SplashScreen from '../components/splash-screen';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -22,25 +23,29 @@ export default class HomeScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation
-    const { dailyGoal } = this.props
-    return (
-      <View style={styles.container}>
-        <Text>Feucht.app</Text>
-        <HydrationProgress drankToday={this.state.drankToday} goal={dailyGoal} />
-        <Button
-          onPress={this.handleDrinkButtonPress}
-          title="Drink 330ML"
-          color="#FE4365"
-          acessibilityLabel="Drink 330ML"
-        />
-        <Button
-          onPress={() =>
-            navigate('Settings')
-          }
-          title='Settings'
-        />
-      </View>
-    );
+    const { dailyGoal, storeInitiated } = this.props
+    if (storeInitiated) {
+      return (
+        <View style={styles.container}>
+          <Text>Feucht.app</Text>
+          <HydrationProgress drankToday={this.state.drankToday} goal={dailyGoal} />
+          <Button
+            onPress={this.handleDrinkButtonPress}
+            title="Drink 330ML"
+            color="#FE4365"
+            acessibilityLabel="Drink 330ML"
+          />
+          <Button
+            onPress={() =>
+              navigate('Settings')
+            }
+            title='Settings'
+          />
+        </View>
+      );
+    } else {
+      return <SplashScreen />
+    }
   }
 }
 
