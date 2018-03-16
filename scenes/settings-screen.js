@@ -49,7 +49,7 @@ class SettingsScreen extends Component {
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.handleDailyGoalChange(text)}
-          value={dailyGoal.toString()}
+          value={dailyGoal}
         />
       </View>
     )
