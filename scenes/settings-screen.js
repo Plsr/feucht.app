@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, AsyncStorage } from 'react-native';
+import { View, Text, TextInput, AsyncStorage } from 'react-native';
 
 const STORAGE_KEY_GOAL = '@FeuchtStore:dailyGoal'
 

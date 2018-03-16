@@ -1,6 +1,7 @@
 const defaultState = {
   dailyGoal: 2000,
-  storeInitiated: false
+  storeInitiated: false,
+  initialSetup: true
 }
 
 const settings = (state = defaultState, action) => {
@@ -14,6 +15,11 @@ const settings = (state = defaultState, action) => {
       return {
         ...state,
         storeInitiated: true
+      }
+    case 'DISABLE_INITIAL_SETUP':
+      return {
+        ...state,
+        initialSetup: false
       }
     default:
       return state

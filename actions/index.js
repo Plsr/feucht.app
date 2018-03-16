@@ -6,3 +6,7 @@ export const setDailyGoal = goal => ({
 export const setStoreInitiated = ()  => ({
   type: 'SET_STORE_INITIATED'
 })
+
+export const disableInitialSetup = () => ({
+  type: 'DISABLE_INITIAL_SETUP'
+})

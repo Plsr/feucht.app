@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import HydrationProgress from '../components/hydration-progress';
 import HydrationPercentage from '../components/hydration-percentage';
 import SplashScreen from '../components/splash-screen';
+import SetupContainer from '../containers/setup-container';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -24,27 +25,33 @@ export default class HomeScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation
-    const { dailyGoal, storeInitiated } = this.props
+    const { dailyGoal, storeInitiated, initialSetup } = this.props
     if (storeInitiated) {
-      return (
-        <View style={styles.container}>
-          <Text>Feucht.app</Text>
-          <HydrationProgress drankToday={this.state.drankToday} goal={dailyGoal} />
-          <HydrationPercentage drankToday={this.state.drankToday} goal={dailyGoal} />
-          <Button
-            onPress={this.handleDrinkButtonPress}
-            title="Drink 330ML"
-            color="#FE4365"
-            acessibilityLabel="Drink 330ML"
-          />
-          <Button
-            onPress={() =>
-              navigate('Settings')
-            }
-            title='Settings'
-          />
-        </View>
-      );
+      if (initialSetup) {
+        return (
+          <SetupContainer />
+        )
+      } else {
+        return (
+          <View style={styles.container}>
+            <Text>Feucht.app</Text>
+            <HydrationProgress drankToday={this.state.drankToday} goal={dailyGoal} />
+            <HydrationPercentage drankToday={this.state.drankToday} goal={dailyGoal} />
+            <Button
+              onPress={this.handleDrinkButtonPress}
+              title="Drink 330ML"
+              color="#FE4365"
+              acessibilityLabel="Drink 330ML"
+            />
+            <Button
+              onPress={() =>
+                navigate('Settings')
+              }
+              title='Settings'
+            />
+          </View>
+        );
+      }
     } else {
       return <SplashScreen />
     }
