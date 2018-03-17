@@ -6,26 +6,17 @@ import SplashScreen from '../components/splash-screen';
 import SetupContainer from '../containers/setup-container';
 
 export default class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { drankToday: 0 }
-  }
 
   componentWillMount() {
     this.props.loadSettings()
   }
 
-  increaseDrankToday = (amount) => {
-    this.setState((prevState) => {
-      return { drankToday: prevState.drankToday + amount }
-    })
-  }
-
-  handleDrinkButtonPress = () => this.increaseDrankToday(330)
+  handleDrinkButtonPress = () => this.props.increaseDrankToday(330)
 
   render() {
     const { navigate } = this.props.navigation
-    const { dailyGoal, storeInitiated, initialSetup } = this.props
+    const { dailyGoal, storeInitiated, initialSetup, drankToday } = this.props
+
     if (storeInitiated) {
       if (initialSetup) {
         return (
@@ -35,8 +26,8 @@ export default class HomeScreen extends React.Component {
         return (
           <View style={styles.container}>
             <Text>Feucht.app</Text>
-            <HydrationProgress drankToday={this.state.drankToday} goal={dailyGoal} />
-            <HydrationPercentage drankToday={this.state.drankToday} goal={dailyGoal} />
+            <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
+            <HydrationPercentage drankToday={drankToday} goal={dailyGoal} />
             <Button
               onPress={this.handleDrinkButtonPress}
               title="Drink 330ML"

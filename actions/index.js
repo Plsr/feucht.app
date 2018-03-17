@@ -10,3 +10,8 @@ export const setStoreInitiated = ()  => ({
 export const disableInitialSetup = () => ({
   type: 'DISABLE_INITIAL_SETUP'
 })
+
+export const increaseDrankToday = amount => ({
+  type: 'INCREASE_DRANK_TODAY',
+  amount
+})

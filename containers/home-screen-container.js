@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setDailyGoal, setStoreInitiated, disableInitialSetup } from '../actions'; 
+import { setDailyGoal, setStoreInitiated, disableInitialSetup, increaseDrankToday } from '../actions'; 
 import { STORAGE_KEY_GOAL } from '../helpers/constants';
 import { AsyncStorage } from 'react-native';
 import HomeScreen from '../scenes/home-screen';
@@ -7,11 +7,13 @@ import HomeScreen from '../scenes/home-screen';
 const mapStateToProps = state => ({
   dailyGoal: state.settings.dailyGoal,
   storeInitiated: state.settings.storeInitiated,
-  initialSetup: state.settings.initialSetup
+  initialSetup: state.settings.initialSetup,
+  drankToday: state.dailyProgress.drankToday
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadSettings: () => setupInitialStore(dispatch)
+  loadSettings: () => setupInitialStore(dispatch),
+  increaseDrankToday: (amount) => dispatch(increaseDrankToday(amount))
 })
 
 setupInitialStore = (dispatch) => {
