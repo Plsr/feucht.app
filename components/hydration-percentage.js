@@ -6,9 +6,10 @@ class HydrationPercentage extends Component {
   render() {
     const { drankToday, goal } = this.props
     const goalReachPercentage = (drankToday / goal) * 100
+    const fixedPercentage = parseFloat(goalReachPercentage).toFixed(1)
 
     return (
-      <Text> {goalReachPercentage}% </Text>
+      <Text> {fixedPercentage}% </Text>
     )
   }
 }
