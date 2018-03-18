@@ -11,7 +11,13 @@ export const disableInitialSetup = () => ({
   type: 'DISABLE_INITIAL_SETUP'
 })
 
-export const increaseDrankToday = amount => ({
-  type: 'INCREASE_DRANK_TODAY',
+export const setDrankToday = amount => ({
+  type: 'SET_DRANK_TODAY',
+  amount
+})
+
+export const startNewDayWithAmount = (dayKey, amount) => ({
+  type: 'START_NEW_DAY_WITH_AMOUNT',
+  dayKey,
   amount
 })

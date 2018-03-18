@@ -11,7 +11,11 @@ export default class HomeScreen extends React.Component {
     this.props.loadSettings()
   }
 
-  handleDrinkButtonPress = () => this.props.increaseDrankToday(330)
+  handleDrinkButtonPress = () => {
+    const amount = this.props.drankToday + 330
+    this.props.setDrankToday(amount, this.props.currentDay)
+  }
+
 
   render() {
     const { navigate } = this.props.navigation
