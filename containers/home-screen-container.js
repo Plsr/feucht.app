@@ -36,7 +36,7 @@ handleTodayAmountIncrease = (amount, day, dispatch) => {
 }
 
 writeDailyProgressToAsyncStorage = async (day, amount) => {
-  const storageString = JSON.stringify('currentDay': day, 'drankToday': amount)
+  const storageString = JSON.stringify({'currentDay': day, 'drankToday': amount})
   try {
     await AsyncStorage.setItem(STORAGE_KEY_DAILY_PROGRESS, storageString)
   } catch (err) {
@@ -68,6 +68,18 @@ writeAsyncStoreToReduxStore = (asyncStore, dispatch) => {
 
   if (dailyGoal) {
     dispatch(disableInitialSetup())
+  }
+
+  const dailyProgress = asyncStore[STORAGE_KEY_DAILY_PROGRESS]
+
+  if (dailyProgress) {
+    const dailyProgressObj = JSON.parse(dailyProgress)
+
+    if (newDayStarted(dailyProgressObj['currentDay'])) {
+      dispatch(startNewDayWithAmount(dayKeyForDate(new Date()), 0))
+    } else {
+      dispatch(setDrankToday(dailyProgressObj['drankToday']))
+    }
   }
 }
 
