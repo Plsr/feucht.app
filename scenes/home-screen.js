@@ -47,10 +47,8 @@ export default class HomeScreen extends React.Component {
               </HollowButton>
             </View>
             <View style={styles.contentWrapper}>
-              <View>
-                <HydrationPercentage drankToday={drankToday} goal={dailyGoal} />
-                <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
-              </View>
+              <HydrationPercentage drankToday={drankToday} goal={dailyGoal} />
+              <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
               <View style={styles.drinkButton}>
                 <PrimaryButton
                   onPress={this.handleDrinkButtonPress}
@@ -76,6 +74,7 @@ const styles = StyleSheet.create({
   contentWrapper: {
     flex: 1,
     height: '100%',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
