@@ -5,7 +5,11 @@ import { waterColor } from '../helpers/colors'
 
 class GoalProgressBackground extends Component {
   percentOfGoalReached = (drank, goal) => {
-    return parseFloat((drank / goal) * 100).toFixed(0)
+    if (goal === 0) {
+      return 0
+    }
+    const percentage = parseFloat((drank / goal) * 100).toFixed(0)
+    return percentage <= 100 ? percentage : 100 
   }
 
   render () {
