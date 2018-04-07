@@ -20,7 +20,8 @@ export default class HomeScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation
-    const { dailyGoal, storeInitiated, initialSetup, drankToday } = this.props
+    const { storeInitiated, initialSetup, drankToday } = this.props
+    const dailyGoal = parseInt(this.props.dailyGoal)
 
     if (storeInitiated) {
       if (initialSetup) {
@@ -30,9 +31,9 @@ export default class HomeScreen extends React.Component {
       } else {
         return (
           <View style={styles.container}>
-            <GoalProgressBackground drankToday={drankToday} dailyGoal={parseInt(dailyGoal)}/>
-            <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
+            <GoalProgressBackground drankToday={drankToday} dailyGoal={dailyGoal}/>
             <HydrationPercentage drankToday={drankToday} goal={dailyGoal} />
+            <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
             <Button
               onPress={this.handleDrinkButtonPress}
               title="Drink 330ML"

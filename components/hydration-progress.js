@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
+import { black } from '../helpers/colors'
 
 class HydrationProgress extends Component {
   prettyPrintAmount = (amount) => {
@@ -10,9 +11,20 @@ class HydrationProgress extends Component {
     const { drankToday, goal } = this.props
 
     return (
-      <Text>You drank {this.prettyPrintAmount(drankToday)} of {this.prettyPrintAmount(goal)} today!</Text>
+      <Text style={styles.text}>You drank {this.prettyPrintAmount(drankToday)} of {this.prettyPrintAmount(goal)} today!</Text>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  text: {
+    width: '100%',
+    textAlign: 'left',
+    fontWeight: '700',
+    fontSize: 20,
+    color: black,
+    marginTop: -10
+  }
+})
 
 export default HydrationProgress;
