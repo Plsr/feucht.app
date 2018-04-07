@@ -4,6 +4,7 @@ import HydrationProgress from '../components/hydration-progress';
 import HydrationPercentage from '../components/hydration-percentage';
 import SplashScreen from '../components/splash-screen';
 import SetupContainer from '../containers/setup-container';
+import GoalProgressBackground from '../components/goal-progress-background';
 
 export default class HomeScreen extends React.Component {
 
@@ -29,7 +30,7 @@ export default class HomeScreen extends React.Component {
       } else {
         return (
           <View style={styles.container}>
-            <Text>Feucht.app</Text>
+            <GoalProgressBackground drankToday={drankToday} dailyGoal={parseInt(dailyGoal)}/>
             <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
             <HydrationPercentage drankToday={drankToday} goal={dailyGoal} />
             <Button
