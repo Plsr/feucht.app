@@ -5,6 +5,11 @@ import HydrationPercentage from '../components/hydration-percentage';
 import SplashScreen from '../components/splash-screen';
 import SetupContainer from '../containers/setup-container';
 import GoalProgressBackground from '../components/goal-progress-background';
+import PrimaryButton from '../components/primary-button'
+import HollowButton from '../components/hollow-button'
+import ButtonText from '../components/button-text'
+import Icon from '@expo/vector-icons/Octicons';
+import { black, white } from '../helpers/colors'
 
 export default class HomeScreen extends React.Component {
 
@@ -32,20 +37,28 @@ export default class HomeScreen extends React.Component {
         return (
           <View style={styles.container}>
             <GoalProgressBackground drankToday={drankToday} dailyGoal={dailyGoal}/>
-            <HydrationPercentage drankToday={drankToday} goal={dailyGoal} />
-            <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
-            <Button
-              onPress={this.handleDrinkButtonPress}
-              title="Drink 330ML"
-              color="#FE4365"
-              acessibilityLabel="Drink 330ML"
-            />
-            <Button
-              onPress={() =>
-                navigate('Settings')
-              }
-              title='Settings'
-            />
+            <View style={styles.settingsButton}>
+              <HollowButton
+                onPress={() =>
+                  navigate('Settings')
+                }
+              >
+                <Icon name="gear" color={black} size={32} />
+              </HollowButton>
+            </View>
+            <View style={styles.contentWrapper}>
+              <View>
+                <HydrationPercentage drankToday={drankToday} goal={dailyGoal} />
+                <HydrationProgress drankToday={drankToday} goal={dailyGoal} />
+              </View>
+              <View style={styles.drinkButton}>
+                <PrimaryButton
+                  onPress={this.handleDrinkButtonPress}
+                >
+                  <ButtonText>Drink 330ML</ButtonText>
+                </PrimaryButton>
+              </View>
+            </View>
           </View>
         );
       }
@@ -57,9 +70,22 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    height: '100%',
+    backgroundColor: white
+  },
+  contentWrapper: {
     flex: 1,
-    backgroundColor: '#83AF9B',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
+  settingsButton: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    padding: 20
+  },
+  drinkButton: {
+    marginTop: 60
+  }
 });  
