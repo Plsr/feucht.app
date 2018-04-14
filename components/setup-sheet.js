@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, AsyncStorage, Button } from 'react-native';
 import FloatingSheet from './floating-sheet'
+import InputLabel from './input-label'
 
 class SetupSheet extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class SetupSheet extends Component {
     const { dailyGoal } = this.state
     return(
       <FloatingSheet>
-        <Text> Set your daily goal</Text>
+        <InputLabel> Set your daily goal</InputLabel>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({ dailyGoal: text })}
