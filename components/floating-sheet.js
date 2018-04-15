@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 11,
-    borderRadius: 4
+    borderRadius: 4,
+    width: '100%'
   } 
 })
 

@@ -12,7 +12,10 @@ import Icon from '@expo/vector-icons/Octicons';
 import { black, white } from '../helpers/colors'
 
 export default class HomeScreen extends React.Component {
-
+  static navigationOptions = {
+    header: null
+  }
+  
   componentWillMount() {
     this.props.loadSettings()
   }
@@ -82,6 +85,7 @@ const styles = StyleSheet.create({
   settingsButton: {
     flexDirection: 'column',
     alignItems: 'flex-end',
+    marginTop: 40,
     padding: 20
   },
   drinkButton: {

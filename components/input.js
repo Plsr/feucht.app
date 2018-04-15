@@ -3,13 +3,6 @@ import { TextInput, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { grey, blueishGrey } from '../helpers/colors'
 
-/*
- * Wrapper around the TextInput class.
- *
- * TODO:
- * - allow number keyboard ot be activated
- * - styling
- */
 class Input extends Component {
   render() {
     return (
@@ -17,6 +10,7 @@ class Input extends Component {
         value={this.props.value}
         onChangeText={this.props.onChangeText}
         style={styles.input}
+        {...this.props}
       />
     )
   }
