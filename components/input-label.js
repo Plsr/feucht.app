@@ -1,26 +1,17 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { Text } from 'react-native'
 import PropTypes from 'prop-types'
-import { black } from '../helpers/colors'
+import BoldText from './bold-text'
 
 class InputLabel extends Component {
   render() {
     return (
-      <Text style={styles.label}>
+      <BoldText style={{ marginBottom: 10 }}>
         {this.props.children}
-      </Text>
+      </BoldText>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  label: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: black,
-    marginBottom: 10
-  }
-})
 
 InputLabel.propTypes = {
   children: PropTypes.node.isRequired
